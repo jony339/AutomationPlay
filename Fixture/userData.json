@@ -1,0 +1,10 @@
+{
+    "valid_user": {
+        "user": "demo",
+        "pass": "duxdemo"
+    },
+    "invalidUser": {
+        "email": "malo@test.com",
+        "password": "incorrecto"
+    }
+}
