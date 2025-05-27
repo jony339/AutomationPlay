@@ -1,0 +1,7 @@
+{
+    "urls": {
+        "dashboard": "https://staging.duxsoftware.com.ar/duxnew/estadisticas/dashboard",
+        "gestion_ventas": "https://staging.duxsoftware.com.ar/pages/facturacion/gestionFacturacion.faces",
+        "nueva_venta": "https://staging.duxsoftware.com.ar/pages/facturacion/nuevaFacturacion.faces"
+    }
+}
