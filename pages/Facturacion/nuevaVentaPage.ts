@@ -7,9 +7,14 @@ export class NuevaVentaPage {
 
     //<<<<<<<<<< Buttons >>>>>>>>>>
     private generarBtn = 'button:has-text("Generar")';
+    private buscarCliente = '#formCabeceraComp button:has-text("Buscar")';
+    private buscarItem = '#formDetalleComp .ui-g div:has-text("Código") button';
     //<<<<<<<<<< Inputs >>>>>>>>>>
+    private codProductoBetaInput = '#popupBuscadorItemBeta .MdInput:contains(Código:) input'
+    private codigoProductoInput = '.card #formDetalleComp .ui-g div:contains(Código de Producto) input'
     //span:has-text("Ventas")
     //<<<<<<<<<< Assertions >>>>>>>>>>
+    private buscadorItemsAssert = '[id="popupBuscadorItemBeta"]';
 
 
     //<<<<<<<<<< Methods >>>>>>>>>>
@@ -19,11 +24,18 @@ export class NuevaVentaPage {
     getSubModulo(subModulo: string) {
         return this.page.locator(`a:has-text("${subModulo}")`);
     }
-    /* async irANuevaventa() {
-        await this.page.hover(this.nuevaVentaBtn);
-        await this.page.click(this.nuevaVentaBtn);
+    async cargarDatosComprobante() {
+        await this.page.hover(this.buscarCliente);
+        await this.page.click(this.buscarCliente);
 
-    } */
+    }
+
+    async cargarItem() {
+        await this.page.hover(this.buscarItem);
+        await this.page.click(this.buscarItem);
+        await this.page.waitForSelector(this.buscadorItemsAssert);
+
+    }
 
 
 }

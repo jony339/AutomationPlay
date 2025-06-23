@@ -36,5 +36,7 @@ test.describe('Login', { tag: ['@login'] }, () => {
         await gestionVentasPage.irANuevaventa();
         await page.waitForURL(asserts.urls.nueva_venta);
         await expect(page).toHaveURL(asserts.urls.nueva_venta);
+        //Rellenar el form
+
     })
 })
