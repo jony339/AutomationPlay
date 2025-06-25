@@ -44,6 +44,15 @@ test.describe('Login', { tag: ['@login'] }, () => {
         await nuevaVentaPage.generarVenta();
         await page.waitForSelector('.ui-confirm-dialog-message')
         await nuevaVentaPage.comfirmDialog();
-
+        const response = await page.waitForResponse(
+            resp =>
+                resp.url().includes('/WSERP/rest/afip/validarComprobante') &&
+                resp.request().method() === 'POST',
+            { timeout: 20000 }
+        );
+        const preview = await response.json();
+        if (!preview || !preview.estado || preview.estado !== 'OK') {
+            throw new Error(`La validación de AFIP falló a causa del Estado: ${preview?.estado}, Mensaje: ${preview?.message}`);
+        }
     })
 })
