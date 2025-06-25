@@ -8,7 +8,6 @@ export class GestionVentasPage {
     //<<<<<<<<<< Buttons >>>>>>>>>>
     private nuevaVentaBtn = 'button:has-text("Nueva Venta")';
     //<<<<<<<<<< Inputs >>>>>>>>>>
-    //span:has-text("Ventas")
     //<<<<<<<<<< Assertions >>>>>>>>>>
 
 

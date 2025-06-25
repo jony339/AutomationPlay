@@ -3,6 +3,7 @@ import asserts from '../Fixture/asserts.json';
 import { test, expect } from '@playwright/test';
 import { LoginPage, HomePage } from '../pages/login';
 import { GestionVentasPage } from '../pages/Facturacion/gestionVentasPage';
+import { NuevaVentaPage } from '../pages/Facturacion/nuevaVentaPage';
 
 test.describe('Login', { tag: ['@login'] }, () => {
 
@@ -25,6 +26,7 @@ test.describe('Login', { tag: ['@login'] }, () => {
         const loginPage = new LoginPage(page);
         const homePage = new HomePage(page);
         const gestionVentasPage = new GestionVentasPage(page);
+        const nuevaVentaPage = new NuevaVentaPage(page);
         await loginPage.goto();
         await loginPage.login(userData.valid_user.user, userData.valid_user.pass);
         await expect(page).toHaveURL(asserts.urls.dashboard);
@@ -37,6 +39,11 @@ test.describe('Login', { tag: ['@login'] }, () => {
         await page.waitForURL(asserts.urls.nueva_venta);
         await expect(page).toHaveURL(asserts.urls.nueva_venta);
         //Rellenar el form
+        await nuevaVentaPage.cargarDatosComprobante('CONSUMIDOR FINAL', '339 - ELECTRONICO', 'FACTURA')
+        await nuevaVentaPage.cargarItem('339', '337');
+        await nuevaVentaPage.generarVenta();
+        await page.waitForSelector('.ui-confirm-dialog-message')
+        await nuevaVentaPage.comfirmDialog();
 
     })
 })

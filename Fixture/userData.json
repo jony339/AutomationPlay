@@ -6,5 +6,12 @@
     "invalidUser": {
         "email": "malo@test.com",
         "password": "incorrecto"
+    },
+    "facturacion": {
+        "nueva_venta": {
+            "tipo_factura": "FACTURA",
+            "valor_venta": "337",
+            "cliente": "CONSUMIDOR FINAL"
+        }
     }
 }
